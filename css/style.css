@@ -1,0 +1,30 @@
+body{
+    background-color: #ffffff;
+}
+
+#btn{
+width:200px;
+height:200px;
+background:#ef454a;
+border-radius: 50%;
+margin:50px auto;
+text-align: center;
+line-height: 200px;
+color:white;
+font-weight: bold;
+font-size: 42px;
+cursor:pointer;
+box-shadow: 0 10px 0 rgb(199 94 94);
+user-select: none;
+
+}
+#btn:hover{
+    opacity: 0.9;
+}
+/* #btn::-webkit-scrollbar{
+    display: none;
+} */
+#btn:active{
+    box-shadow: 0 5px 0 rgb(199 94 94);
+    margin-top:55px;
+}
