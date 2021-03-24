@@ -4,36 +4,30 @@
 <head>
     <!-- <meta charset="utf-8"> -->
     <title>ClanchGames</title>
-    <link rel="stylesheet" href="css/style.css">
+    <script src="/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+        $(function() {
+            $("#top").load("/common/top.html");
+            $("#footer").load("/common/footer.html");
+        });
+    </script>
+
 </head>
 
-<body topmargin="0" bottommargin="0" rightmargin="0" leftmargin="0">
-    <section class="headerImage">
-        <img src="background.png">
-        <p class="NoWrap">Clanch Games</p>
-    </section>
-
-    <section>
-        <ul class="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="games.html">Games</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-    </section>
-
+<body>
+    <div id="top"></div>
     <section class="home">
         <div id="introduction">
             <p style="font-size: large">Introduction</p>
 
             <h1 style="font-size: large;">
                 Clanch Games is game development team. The team member is only one, me, but I want to develop games with anyone as a real team in the future. So if you want to develop games with me, please
-                <a href="contact.html">contact.</a>
+                <a href="/contact.html">contact.</a>
             </h1>
         </div>
     </section>
-
+    <div id="footer"></div>
 </body>
 
 </html>

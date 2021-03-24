@@ -5,30 +5,24 @@
 <head>
     <!-- <meta charset="utf-8"> -->
     <title>ClanchGames</title>
-    <link rel="stylesheet" href="css/style.css">
+    <script src="/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+        $(function() {
+            $("#top").load("/common/top.html");
+            $("#footer").load("/common/footer.html");
+        });
+    </script>
+
 </head>
 
-<body topmargin="0" bottommargin="0" rightmargin="0" leftmargin="0">
-    <section class="headerImage">
-        <img src="background.png">
-        <p class="NoWrap">Clanch Games</p>
-    </section>
-
-    <section>
-        <ul class="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="games.html">Games</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-
-    </section>
-
+<body>
+    <div id="top"></div>
     <p>Contact</p>
     <section class="contact">
 
     </section>
-
+    <div id="footer"></div>
 </body>
 
 </html>
