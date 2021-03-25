@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+
+<head>
+    <title>BlockBreak</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function ()
+        {
+            $("#top").load("/common/top.html");
+            $("#content").fadeIn(10);
+            $("#footer").load("/common/footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <div id="top"></div>
+    <div id="content">
+        <div id="canvas_wrapper">
+            <canvas id="myCanvas" width=800px height=600px></canvas>
+        </div>
+        <script src="main.js "></script>
+        <script>
+        </script>
+    </div>
+    <div id="footer "></div>
+</body>
+
+</html>

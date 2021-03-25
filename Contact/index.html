@@ -8,8 +8,10 @@
     <script src="/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
     <script>
-        $(function() {
+        $(function ()
+        {
             $("#top").load("/common/top.html");
+            $("#content").fadeIn(10);
             $("#footer").load("/common/footer.html");
         });
     </script>
@@ -18,10 +20,10 @@
 
 <body>
     <div id="top"></div>
-    <p>Contact</p>
-    <section class="contact">
+    <div id="content">
 
-    </section>
+        <p>Contact</p>
+    </div>
     <div id="footer"></div>
 </body>
 

@@ -9,6 +9,10 @@ a {
     color: rgb(0, 102, 255);
 }
 
+#top {
+    /* display: none; */
+}
+
 .headerImage {
     position: relative;
 }
@@ -16,7 +20,7 @@ a {
 .headerImage img {
     color: black;
     width: 100%;
-    height: 100px;
+    height: 80px;
     vertical-align: bottom;
 }
 
@@ -40,7 +44,7 @@ a {
     white-space: nowrap;
 }
 
-.menu {
+#menu {
     list-style: none;
     top: -100px;
     padding: 0 0 0 0;
@@ -52,19 +56,29 @@ a {
     background-color: rgb(0, 78, 109);
 }
 
-.menu li {
-    width: 140px;
-    height: 50px;
-    line-height: 50px;
+#menu li {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border: solid;
+    border-top-width: 0px;
+    border-bottom-width: 0px;
+    border-right-width: 2px;
+    border-left-width: 2px;
     margin: auto;
     /* background-color: rgb(17, 75, 17); */
 }
 
-.menu li a {
+#menu li a {
     text-decoration: none;
     color: white;
     font-weight: bold;
     font-size: large;
-    padding: 20px;
+    display: block;
     /*クリックできる範囲を広げる*/
+}
+
+#content {
+    /* 最初はオフにしておいて後でfadeinすることでちらつき対策 */
+    display: none;
 }

@@ -4,11 +4,13 @@
 <head>
     <!-- <meta charset="utf-8"> -->
     <title>ClanchGames</title>
-    <script src="/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
+    <script src="/jquery-3.6.0.min.js"></script>
     <script>
-        $(function() {
+        $(function ()
+        {
             $("#top").load("/common/top.html");
+            $("#content").fadeIn(10);
             $("#footer").load("/common/footer.html");
         });
     </script>
@@ -17,16 +19,16 @@
 
 <body>
     <div id="top"></div>
-    <section class="home">
+    <div id="content">
         <div id="introduction">
             <p style="font-size: large">Introduction</p>
-
             <h1 style="font-size: large;">
-                Clanch Games is game development team. The team member is only one, me, but I want to develop games with anyone as a real team in the future. So if you want to develop games with me, please
-                <a href="/contact.html">contact.</a>
+                Clanch Games is game development team. The team member is only one, me, but I want to develop games with
+                anyone as a real team in the future. So if you want to develop games with me, please
+                <a href="/Contact/">contact.</a>
             </h1>
         </div>
-    </section>
+    </div>
     <div id="footer"></div>
 </body>
 
