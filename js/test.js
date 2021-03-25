@@ -1,1 +1,1 @@
-console.log(PathName.ContactPath)
+console.log(pathname.A)
