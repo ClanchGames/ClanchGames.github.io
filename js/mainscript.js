@@ -19,7 +19,7 @@ const menubutton = menu.getElementsByTagName("li");
 
 function MarkMenu()
 {
-    console.log(location.pathname)
+    // console.log(location.pathname)
     let path = 0;
     if (location.pathname == PathName.Home)
     {

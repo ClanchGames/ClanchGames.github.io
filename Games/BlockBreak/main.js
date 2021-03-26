@@ -18,12 +18,16 @@ context.strokeStyle = "blue"
 context.stroke()
 context.closePath()
 
-var x = canvas.width / 2;
-var y = canvas.height - 50;
 
-var dx = 5;
-var dy = -5;
+
+var speed = 5;
+var dx = speed;
+var dy = -speed;
 var ballRadius = 10
+var ballStartPositionX = canvas.width / 2;
+var ballStartPositionY = canvas.height / 2 + 20;
+var x = ballStartPositionX;
+var y = ballStartPositionY;
 var paddleHeight = 40;
 var paddleWidth = 200;
 var paddleX = (canvas.width - paddleWidth) / 2
@@ -32,9 +36,11 @@ var rightPressed = false;
 var leftPressed = false;
 
 var score = 0;
+var lives = 3;
 
 var brickRowCount = 5;
-var brickColumnCount = 5;
+var brickColumnCount = 4;
+var totalbricks = brickRowCount * brickColumnCount;
 var brickWidth = 200;
 var brickHeight = 20;
 var brickPadding = 10;
@@ -56,6 +62,7 @@ function collisionDitection()
     {
         for (var r = 0; r < brickRowCount; r++)
         {
+
             var b = bricks[c][r]
             if (b.status == 1)
             {
@@ -63,7 +70,18 @@ function collisionDitection()
                 {
                     dy *= -1;
                     b.status = 0;
-                    score++;
+                    score++;//addscore
+                    totalbricks--;
+
+                    if (totalbricks == 0)
+                    {
+                        window.setTimeout(() =>
+                        {
+                            //Win
+                            alert("YOU WIN!!!");
+                            document.location.reload();
+                        }, 100);
+                    }
                 }
             }
         }
@@ -118,6 +136,12 @@ function drawScore()
     context.fillStyle = "black";
     context.fillText("Score:" + score, 8, 30);
 }
+function drawLives()
+{
+    context.font = "30px Arial";
+    context.fillStyle = "black";
+    context.fillText("Life:" + lives, canvas.width - 80, 30);
+}
 
 function draw()
 {
@@ -127,6 +151,7 @@ function draw()
     drawPaddle()
     collisionDitection();
     drawScore();
+    drawLives();
 
     if (y + dy - ballRadius < 0) //画面上部に行ったとき
     {
@@ -143,11 +168,23 @@ function draw()
     }
     if (y + dy + ballRadius > canvas.height)
     {
-        if (!IsDebug)
+        lives--;
+        if (lives <= 0)
         {
-            alert("Game Over");
-            document.location.reload();
-            clearInterval(interval);
+            if (!IsDebug)
+            {
+                alert("Game Over");
+                document.location.reload();
+                cancelAnimationFrame(loop)
+            }
+        }
+        else
+        {
+            x = ballStartPositionX;
+            y = ballStartPositionY;
+            dx = speed;
+            dy = -speed;
+            paddleX = (canvas.width - paddleWidth) / 2;
         }
     }
 
@@ -166,13 +203,14 @@ function draw()
 
     x += dx;
     y += dy;
-
+    const loop = requestAnimationFrame(draw);
 }
 
 
 
 document.addEventListener("keydown", keyDownHandler, false)
 document.addEventListener("keyup", keyUpHandler, false)
+document.addEventListener("mousemove", mouseMoveHandler, false)
 
 function keyDownHandler(e)
 {
@@ -202,7 +240,16 @@ function keyUpHandler(e)
     }
 }
 
-scroll
+function mouseMoveHandler(e)
+{
+    var relativeX = e.clientX - canvas.offsetLeft;
+    if (relativeX > 0 && relativeX < canvas.width)
+    {
+        paddleX = relativeX - paddleWidth / 2;
+    }
+}
+
+
 
 var IsStart = false;
 var interval;
@@ -211,7 +258,8 @@ var update = setInterval(() =>
     if (IsStart)
     {
         clearInterval(update)
-        interval = setInterval(draw, 10)
+        draw();
+
     }
 })
 document.onkeydown = pageMove;
