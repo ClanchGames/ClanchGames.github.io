@@ -6,6 +6,8 @@
     <title>BlockBreak</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
     <script src="/jquery-3.6.0.min.js"></script>
     <script>
         $(function ()
@@ -22,15 +24,79 @@
 <body>
     <div id="top"></div>
     <div id="content">
+        <script>
 
-        <div id="canvas_wrapper">
-            <canvas id="myCanvas" width=600px height=400px></canvas>
-            <script src="main.js "></script>
+            function start()
+            {
+                // console.log("in");
+                // var wholeElement = document.getElementById('wholeCanvas'); // 移動させたい位置の要素を取得
+                // var rect = wholeElement.getBoundingClientRect();
+                // // 一番上からの位置を取得
+                // function scroll()
+                // {
+                //     scrollTo(0, rect.top);
+                //     console.log(rect.top)
+                // }
+                // scroll();
+
+                var ele = document.getElementById("wholeCanvas");
+                var rect = ele.getBoundingClientRect();
+                scrollTo(0, rect.bottom)
+            }
+
+
+            if (window.performance)
+            {
+                if (performance.navigation.type === 1)
+                {
+                    window.requestAnimationFrame(start);
+                }
+            }
+            window.onload = start;
+        </script>
+        <p
+            style="height: 50px; background-color:lightgray; margin:0 0 0 0 ; text-align: center; font-size: 60px; font-family: 'Sigmar One', cursive;">
+            Brick Break Double ~BBD~
+        </p>
+        <div id="wholeCanvas">
+            <!-- <div id="message">
+                <h1>
+                    GameOver<br>
+                    Press space to restart
+                </h1>
+            </div> -->
+            <!-- ブロック崩し1 -->
+            <div id="canvas_wrapper">
+                <canvas id="myCanvas1" width=600px height=400px></canvas>
+                <script src="main3.js" type="module"></script>
+            </div>
+
+            <!-- ブロック崩し2 -->
+            <div id="canvas_wrapper2">
+                <canvas id="myCanvas2" width=600px height=400px></canvas>
+                <script src="main2.js" type="module"></script>
+            </div>
+
+            <!-- <div id="canvas_wrapper3">
+                <canvas id="myCanvas3" width=1300px height=500px></canvas>
+                <script>
+
+                </script> -->
         </div>
-        <div id="canvas_wrapper2">
-            <canvas id="myCanvas2" width=600px height=400px></canvas>
-            <script src="main2.js"></script>
+        <div id="operation">
+            <div>
+                A:Left D:Right
+            </div>
+            <div>
+                J:Left L:Right
+            </div>
         </div>
+
+        <div id="contentEnd">
+
+        </div>
+    </div>
+
 
     </div>
     <div id="footer "></div>

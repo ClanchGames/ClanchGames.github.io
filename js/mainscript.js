@@ -2,7 +2,8 @@
 const PathName = {
     HomePath: "/",
     GamesPath: "/Games/",
-    ContactPath: "/Contact/"
+    ContactPath: "/Contact/",
+    GameCollectionsPath: "/Games/[A-Z]"
 }
 const menulist = {
     Home: 0,
@@ -13,9 +14,12 @@ const menu = document.getElementById("menu");
 
 const menubutton = menu.getElementsByTagName("li");
 
-
-
-
+const url = location.href;
+function getParentURL(url)
+{
+    return url.replace(/[^/]*$/, "");
+}
+const ParentPath = getParentURL(url);
 
 function MarkMenu()
 {
@@ -24,7 +28,7 @@ function MarkMenu()
     if (location.pathname == PathName.Home)
     {
         path = menulist.Home
-    } else if (location.pathname == PathName.GamesPath)
+    } else if (location.pathname == PathName.GamesPath || ParentPath == PathName.GamesPath)
     {
         path = menulist.Games
     } else if (location.pathname == PathName.ContactPath)

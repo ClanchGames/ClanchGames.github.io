@@ -1,8 +1,14 @@
-#myCanvas {
+#myCanvas1 {
     background-color: rgb(120, 131, 131);
+   
 }
 #myCanvas2{
     background-color: rgb(120,131,131);
+  
+}
+
+#myCanvas3{
+    background-color: rgb(28, 29, 29);
 }
 
 #canvas_wrapper {
@@ -12,7 +18,7 @@
     padding-left: 150px;
     padding-right: 10px;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 0px;
 }
 
 #canvas_wrapper2 {
@@ -22,5 +28,34 @@
     padding-right: 150px; 
     padding-left: 10px;
     padding-top: 50px;
+    padding-bottom: 0px;
+}
+#canvas_wrapper3 {
+   
+    /* width: 400px; */
+    margin: auto auto;
+    padding-right: 150px; 
+    padding-left: 10px;
+    padding-top: 50px;
     padding-bottom: 50px;
+}
+#wholeCanvas{
+    background: lightgray;
+    display: table-cell; /* IE8から使用可能 */
+    vertical-align: middle;
+    text-align: center;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+#message{
+    background: rgb(255, 150, 150);
+    width:80%;
+    max-width:500px;
+    margin:0 auto;
+    vertical-align: middle;
+}
+
+#message h1{
+   
 }

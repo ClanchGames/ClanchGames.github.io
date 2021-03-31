@@ -1,17 +1,12 @@
 
-import { main3GameOver, getMain3Loop } from "./main3.js"
-
+import { main2GameOver, getMain2Loop } from "./main2.js"
 var IsDebug = false;
-var canvas = document.getElementById("myCanvas2")
+var canvas = document.getElementById("myCanvas1")
 const ctx = canvas.getContext('2d')
 
 
-
-
-export var main2GameOver = false;
-
-var main2Direction = { right: false, left: false }
-
+export var main3GameOver = false;
+var main3Direction = { right: false, left: false }
 
 //BallClass
 class Ball
@@ -51,7 +46,7 @@ class Ball
         }
         if (this.y + this.dy + this.radius > canvas.height)
         {
-            main2GameOver = true;
+            main3GameOver = true;
         }
     }
 }
@@ -79,10 +74,10 @@ export class Paddle
     }
     update()
     {
-        if (this.x < canvas.width - this.width && main2Direction.right)
+        if (this.x < canvas.width - this.width && main3Direction.right)
             this.x += this.speed;
 
-        if (this.x > 0 && main2Direction.left)
+        if (this.x > 0 && main3Direction.left)
             this.x -= this.speed;
 
         this.draw();
@@ -160,67 +155,69 @@ export function HitBall(x1, x2, y1, y2)
 
 
 
-var main2IsStart = false;
+var main3IsStart = false;
 document.addEventListener("keydown", keyDownHandler, false)
 document.addEventListener("keyup", keyUpHandler, false)
 function keyDownHandler(e)
 {
     console.log(e.key);
-    if (e.key == "L" || e.key == "l")
+    if (e.key == "D" || e.key == "d")
     {
-
-        main2Direction.right = true;
+        main3Direction.right = true;
     }
-    else if (e.key == "J" || e.key == "j")
+    else if (e.key == "A" || e.key == "a")
     {
-        main2Direction.left = true;
+        main3Direction.left = true;
     }
     if (e.key == " " || e.code == "Space")
     {
-        main2IsStart = true;
+        main3IsStart = true;
+        return false;
     }
 }
 
 function keyUpHandler(e)
 {
-    if (e.key == "L" || e.key == "l")
+    if (e.key == "D" || e.key == "d")
     {
-        main2Direction.right = false;
+        main3Direction.right = false;
     }
-    else if (e.key == "J" || e.key == "j")
+    else if (e.key == "A" || e.key == "a")
     {
-        main2Direction.left = false;
+        main3Direction.left = false;
     }
 }
+
+
 
 
 function update()
 {
 
-    if (main2GameOver || main3GameOver)
+    if (main3GameOver || main2GameOver)
     {
-        window.cancelAnimationFrame(main2loop);
-        window.cancelAnimationFrame(getMain3Loop);
-
-        if (main2GameOver)
+        window.cancelAnimationFrame(main3loop);
+        window.cancelAnimationFrame(getMain2Loop);
+        if (main3GameOver)
         {
             if (window.confirm("GameOver\nPress ok to restart."))
             {
+
                 location.href = ""; // example_confirm.html へジャンプ
+
             }
         }
-
     }
     else
     {
-
-        var main2loop = window.requestAnimationFrame(update);
+        var main3loop = window.requestAnimationFrame(update);
     }
 
-    if (!main2IsStart)
+    if (!main3IsStart)
     {
         return;
     }
+
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ball.update();
     paddle.update();
@@ -239,10 +236,9 @@ function update()
     }
 }
 update();
-
-export function getMain2Loop()
+export function getMain3Loop()
 {
-    return main2loop;
+    return main3loop;
 }
 
 
