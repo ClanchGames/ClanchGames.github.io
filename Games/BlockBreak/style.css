@@ -1,13 +1,16 @@
-#myCanvas1 {
-    background-color: rgb(120, 131, 131);
-   
-}
-#myCanvas2{
-    background-color: rgb(120,131,131);
-  
+:root {
+    --arrow-color: gray;
 }
 
-#myCanvas3{
+#myCanvas1 {
+    background-color: rgb(120, 131, 131);
+}
+
+#myCanvas2 {
+    background-color: rgb(120, 131, 131);
+}
+
+#myCanvas3 {
     background-color: rgb(28, 29, 29);
 }
 
@@ -25,37 +28,99 @@
     display: table-cell;
     /* width: 400px; */
     margin: auto auto;
-    padding-right: 150px; 
+    padding-right: 150px;
     padding-left: 10px;
     padding-top: 50px;
     padding-bottom: 0px;
 }
+
 #canvas_wrapper3 {
-   
     /* width: 400px; */
     margin: auto auto;
-    padding-right: 150px; 
+    padding-right: 150px;
     padding-left: 10px;
     padding-top: 50px;
     padding-bottom: 50px;
 }
-#wholeCanvas{
+
+#wholeCanvas {
     background: lightgray;
-    display: table-cell; /* IE8から使用可能 */
+    display: table-cell;
+    /* IE8から使用可能 */
     vertical-align: middle;
     text-align: center;
     padding-bottom: 0;
     margin-bottom: 0;
 }
 
-#message{
+#message {
     background: rgb(255, 150, 150);
-    width:80%;
-    max-width:500px;
-    margin:0 auto;
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
     vertical-align: middle;
 }
 
-#message h1{
-   
+#message h1 {}
+
+#operation {
+    width: max-content;
+}
+
+#operation ul {
+    list-style: none;
+    /* overflow: hidden; */
+    width: max-content;
+}
+
+#operation ul li {
+    float: left;
+}
+
+.arrowright {
+    display: inline-block;
+    height: 20px;
+    width: 100px;
+    background-color: var(--arrow-color);
+    position: relative;
+    top: 20px;
+}
+
+.arrowright h1 {
+    margin: -10px 0px 0px -30px;
+}
+
+.arrowright:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-left: 40px solid var(--arrow-color);
+    left: 100px;
+    top: -10px;
+}
+
+.arrowleft {
+    display: inline-block;
+    height: 20px;
+    width: 100px;
+    background-color: var(--arrow-color);
+    position: relative;
+    top: 20px;
+}
+
+.arrowleft h1 {
+    margin: -10px 0px 0px 110px;
+}
+
+.arrowleft:before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-right: 40px solid var(--arrow-color);
+    right: 100px;
+    top: -10px;
 }
