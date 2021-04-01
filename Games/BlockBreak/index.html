@@ -8,20 +8,12 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
-    <script src="/jquery-3.6.0.min.js"></script>
-    <script>
-        $(function ()
-        {
-            $("#info").load("/common/info.html");
-            $("#top").load("/common/top.html");
-            $("#content").fadeIn(10);
-            $("#footer").load("/common/footer.html");
-        });
-    </script>
     <div id="info"></div>
 </head>
 
 <body>
+    <script src="/jquery-3.6.0.min.js"></script>
+    <script src="/common/load.js"></script>
     <div id="top"></div>
     <div id="content">
         <script>
@@ -41,7 +33,7 @@
 
                 var ele = document.getElementById("wholeCanvas");
                 var rect = ele.getBoundingClientRect();
-                scrollTo(0, rect.bottom)
+                scrollTo(0, rect.top)
             }
 
 
@@ -122,7 +114,7 @@
 
 
     </div>
-    <div id="footer "></div>
+    <div id="footer"></div>
 </body>
 
 </html>

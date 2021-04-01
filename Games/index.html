@@ -4,29 +4,19 @@
 <head>
     <!-- <meta charset="utf-8"> -->
     <title>Games|ClanchGames</title>
-
-    <script src="/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
-    <script>
-        $(function ()
-        {
-            $("#info").load("/common/info.html");
-            $("#top").load("/common/top.html");
-            $("#content").fadeIn(10);
-            $("#footer").load("/common/footer.html");
-        });
-    </script>
     <div id="info"></div>
 </head>
 
 <body>
+    <script src="/jquery-3.6.0.min.js"></script>
+    <script src="/common/load.js"></script>
     <div id="top"></div>
-
     <div id="content">
         <p>Games</p>
         <div>
             <ul>
-                <li><a href="/Games/SnakeGame/index.html">Snake Game</a></li>
+                <li><a href="/Games/SnakeGame/">Snake Game</a></li>
                 <li><a href="/Games/BlockBreak/">Block Break</a></li>
             </ul>
         </div>
