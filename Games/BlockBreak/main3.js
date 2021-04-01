@@ -174,6 +174,7 @@ function keyDownHandler(e)
         main3IsStart = true;
         return false;
     }
+
 }
 
 function keyUpHandler(e)
@@ -200,11 +201,9 @@ function update()
         window.cancelAnimationFrame(getMain2Loop);
         if (main3GameOver)
         {
-            if (window.confirm("GameOver\nPress ok to restart."))
+            if (window.confirm("GameOver"))
             {
-
-                location.href = ""; // example_confirm.html へジャンプ
-
+                location.href = "";
             }
         }
     }
@@ -240,7 +239,10 @@ export function getMain3Loop()
 {
     return main3loop;
 }
-
+export function getMain3IsStart()
+{
+    return main3IsStart;
+}
 
 
 

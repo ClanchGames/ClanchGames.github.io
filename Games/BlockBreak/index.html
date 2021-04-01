@@ -14,26 +14,37 @@
 <body>
     <div id="top"></div>
     <div id="content">
-        <script>
 
+        <!-- 画面を読み込んだらゲーム画面の高さまでスクロール -->
+        <script>
             function start()
             {
-                var ele = document.getElementById("wholeCanvas");
+                var ele = document.getElementById("Title");
                 var rect = ele.getBoundingClientRect();
-                scrollTo(0, rect.top)
+                // window.scrollTo({
+                //     top: rect.top,
+                //     behavior: "smooth",
+                // });
+                window.scrollTo(0, rect.top);
             }
+            // if (window.performance)
+            // {
+            //     if (performance.navigation.type === 1)
+            //     {
+            //         window.requestAnimationFrame(start);
+            //     }
+            // }
 
-
-            if (window.performance)
+            // window.onload(() =>
+            // {
+            //     window.requestAnimationFrame(start);
+            // });
+            setTimeout(() =>
             {
-                if (performance.navigation.type === 1)
-                {
-                    window.requestAnimationFrame(start);
-                }
-            }
-            window.onload = start;
+                start();
+            }, 100);
         </script>
-        <p
+        <p id="Title"
             style="height: 50px; background-color:lightgray; margin:0 0 0 0 ; text-align: center; font-size: 60px; font-family: 'Sigmar One', cursive;">
             Brick Break Double ~BBD~
         </p>
@@ -50,42 +61,55 @@
                 <canvas id="myCanvas2" width=600px height=400px></canvas>
                 <script src="main2.js" type="module"></script>
             </div>
-
-
         </div>
+        <div>
+            <script src="manager.js" type="module">
+            </script>
+
+            <!-- spaceを押したときスクロールしないようにする -->
+            <script>
+                document.onkeydown = pageMove;
+                function pageMove()
+                {
+                    console.log(event.key)
+                    if (event.key == " " || event.key == "space")
+                    {
+                        return false;
+                    }
+                }
+            </script>
+        </div>
+
+        <!-- 操作方法 -->
         <div id="operation">
             <ul>
                 <li>
                     <div class="arrowleft" style="margin-left: 200px;">
-                        <h1>A</h1>
+                        <h1>A<h1>
                     </div>
                 </li>
                 <li>
                     <div class="arrowright" style="margin-left: 220px;">
-                        <h1>
-                            D
-                        </h1>
+                        <h1>D</h1>
                     </div>
                 </li>
                 <li>
                     <div class="arrowleft" style="margin-left: 200px;">
-                        <h1>
-                            J
-                        </h1>
+                        <h1>J</h1>
                     </div>
                 </li>
                 <li>
                     <div class=" arrowright" style="margin-left: 220px;">
-                        <h1>
-                            L
-                        </h1>
+                        <h1>L</h1>
                     </div>
                 </li>
             </ul>
-
+            <p id="announcement" style="width:max-content;margin:0 auto; font-size: 40px;  padding-top: 80px; ">
+                Press space to start
+            </p>
         </div>
 
-        <div id=" contentEnd">
+        <div id="contentEnd">
 
         </div>
     </div>

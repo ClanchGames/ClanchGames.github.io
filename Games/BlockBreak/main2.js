@@ -178,6 +178,7 @@ function keyDownHandler(e)
     if (e.key == " " || e.code == "Space")
     {
         main2IsStart = true;
+        return false;
     }
 }
 
@@ -191,6 +192,7 @@ function keyUpHandler(e)
     {
         main2Direction.left = false;
     }
+
 }
 
 
@@ -204,16 +206,14 @@ function update()
 
         if (main2GameOver)
         {
-            if (window.confirm("GameOver\nPress ok to restart."))
+            if (window.confirm("GameOver"))
             {
-                location.href = ""; // example_confirm.html へジャンプ
+                location.href = "";
             }
         }
-
     }
     else
     {
-
         var main2loop = window.requestAnimationFrame(update);
     }
 
@@ -243,6 +243,10 @@ update();
 export function getMain2Loop()
 {
     return main2loop;
+}
+export function getMain2IsStart()
+{
+    return main2IsStart;
 }
 
 

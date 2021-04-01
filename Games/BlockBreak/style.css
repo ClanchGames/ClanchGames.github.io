@@ -64,8 +64,9 @@
 #message h1 {}
 
 #operation {
-    width: max-content;
-    margin-bottom: 200px;
+    width: 100%;
+    margin-bottom: 90px;
+    margin-top: 0px;
 }
 
 #operation ul {
@@ -124,4 +125,19 @@
     border-right: 40px solid var(--arrow-color);
     right: 100px;
     top: -10px;
+}
+
+#announcement {
+    user-select: none;
+    animation: flash 2s linear infinite;
+    animation-play-state: running;
+}
+
+@keyframes flash {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
