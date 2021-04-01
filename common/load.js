@@ -1,8 +1,19 @@
 
-$(function ()
+$(document).ready(function ()
 {
+    // google search consoleの情報
     $("#info").load("/common/info.html");
-    $("#top").load("/common/top.html");
-    $("#content").fadeIn(10);
+    // navigation menuなど
+    $("#top").load("/common/top/top.html");
+    // footer
     $("#footer").load("/common/footer/footer.html");
+
+    // 表示をずらしてちらつき防止
+    $(function ()
+    {
+        setTimeout(() =>
+        {
+            $("body").css({ "visibility": "visible" });
+        }, 50);
+    });
 });
