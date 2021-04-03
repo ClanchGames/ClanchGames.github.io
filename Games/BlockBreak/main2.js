@@ -122,7 +122,7 @@ export class Brick
     }
 }
 
-var ball = new Ball(200, 200, 5, 10);
+var ball = new Ball(200, 200, 4, 10);
 
 //paddle x,y,width,height,speed
 var paddle = new Paddle((canvas.width - 200) / 2, 200, 20, 7);
