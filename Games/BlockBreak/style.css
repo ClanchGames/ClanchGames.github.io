@@ -1,5 +1,7 @@
 :root {
     --arrow-color: gray;
+    /* 設定エリアのアイコンの色 */
+    --congig-icon: rgb(54, 54, 54);
 }
 
 #myCanvas1 {
@@ -140,4 +142,43 @@
     50% {
         opacity: 0;
     }
+}
+
+/* 本体左 */
+
+.volume {
+    font-size: 100px;
+    position: relative;
+    width: 0.1em;
+    height: 0.1em;
+    background-color: var(--congig-icon);
+}
+
+/* 本体右 */
+
+.volume::before {
+    content: "";
+    position: absolute;
+    top: -0.15em;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 0.2em solid transparent;
+    border-bottom: 0.2em solid transparent;
+    border-right: 0.3em solid var(--congig-icon);
+}
+
+/* 音量1 */
+
+.volume1 {
+    position: absolute;
+    top: -0.13em;
+    left: -0.15em;
+    width: 0.45em;
+    height: 0.2em;
+    border-top: 0.1em solid transparent;
+    border-left: 0.05em solid transparent;
+    border-right: 0.05em solid var(--congig-icon);
+    border-bottom: 0.1em solid transparent;
+    border-radius: 100%;
 }

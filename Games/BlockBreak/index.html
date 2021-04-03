@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap" rel="stylesheet">
+
     <div id="info"></div>
 </head>
 
@@ -109,6 +110,17 @@
             </p>
         </div>
 
+        <!-- 設定エリア -->
+        <div style="width:100%; height: fit-content;">
+            <!-- 音量設定 -->
+            <div style="position:absolute;right: 100px;margin-top: -130px;">
+                <div class="volume">
+                    <div class="volume1"></div>
+                </div>
+                <input id="volumeBar" type="range" name="volume" step="0.01" min="0" max="0.1" value="0.1"
+                    style="position: relative;left: 40px;bottom: 10px;">
+            </div>
+        </div>
         <div id="contentEnd">
 
         </div>

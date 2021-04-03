@@ -6,6 +6,7 @@ const ctx = canvas.getContext('2d')
 
 
 export var main3GameOver = false;
+export var IsGameClear = false;
 var main3Direction = { right: false, left: false }
 
 //BallClass
@@ -26,7 +27,7 @@ class Ball
     {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "red"
+        ctx.fillStyle = "yellow"
         ctx.fill()
         ctx.closePath()
     }
@@ -47,6 +48,7 @@ class Ball
         if (this.y + this.dy + this.radius > canvas.height)
         {
             main3GameOver = true;
+            this.dy *= -1;
         }
     }
 }
@@ -68,7 +70,7 @@ export class Paddle
     {
         ctx.beginPath();
         ctx.rect(this.x, canvas.height - this.height, this.width, this.height);
-        ctx.fillStyle = "green";
+        ctx.fillStyle = "lime";
         ctx.fill()
         ctx.closePath()
     }
@@ -117,7 +119,7 @@ export class Brick
     }
 }
 
-var ball = new Ball(200, 200, 6, 10);
+var ball = new Ball(200, 200, 5, 10);
 
 //paddle x,y,width,height,speed
 var paddle = new Paddle((canvas.width - 200) / 2, 200, 20, 7);
@@ -127,13 +129,15 @@ var brickRow = 5;
 var brickWidth = canvas.width / brickColumn;
 var brickHeight = canvas.height / 4 / brickRow;
 var bricks = [];
+export var brickcount = 0;
 //とりあえず二次元配列を生成して、brickもその分生成する。
 for (let i = 0; i < brickColumn; i++)
 {
     bricks[i] = [];
     for (let j = 0; j < brickRow; j++)
     {
-        bricks[i][j] = new Brick(brickWidth * j, brickHeight * i, brickWidth, brickHeight, "blue");
+        brickcount++;
+        bricks[i][j] = new Brick(brickWidth * j, brickHeight * i, brickWidth, brickHeight, "purple");
     }
 }
 
@@ -194,16 +198,22 @@ function keyUpHandler(e)
 
 function update()
 {
-
     if (main3GameOver || main2GameOver)
     {
-        window.cancelAnimationFrame(main3loop);
-        window.cancelAnimationFrame(getMain2Loop);
-        if (main3GameOver)
+        if (IsDebug)
         {
-            if (window.confirm("GameOver"))
+            var main3loop = window.requestAnimationFrame(update);
+        }
+        else
+        {
+            window.cancelAnimationFrame(main3loop);
+            window.cancelAnimationFrame(getMain2Loop);
+            if (main3GameOver)
             {
-                location.href = "";
+                if (window.confirm("GameOver"))
+                {
+                    location.href = "";
+                }
             }
         }
     }
@@ -229,7 +239,13 @@ function update()
             bricks[i][j].update();
             if (bricks[i][j].isHit)
             {
+                brickcount--;
                 bricks[i][j] = new Brick();
+            }
+
+            if (brickcount <= 0)
+            {
+                IsGameClear = true;
             }
         }
     }

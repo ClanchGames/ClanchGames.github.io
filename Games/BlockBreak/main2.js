@@ -9,7 +9,7 @@ const ctx = canvas.getContext('2d')
 
 
 export var main2GameOver = false;
-
+export var IsGameClear = false;
 var main2Direction = { right: false, left: false }
 
 
@@ -31,7 +31,7 @@ class Ball
     {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "red"
+        ctx.fillStyle = "cyan"
         ctx.fill()
         ctx.closePath()
     }
@@ -52,6 +52,7 @@ class Ball
         if (this.y + this.dy + this.radius > canvas.height)
         {
             main2GameOver = true;
+            this.dy *= -1;
         }
     }
 }
@@ -73,7 +74,7 @@ export class Paddle
     {
         ctx.beginPath();
         ctx.rect(this.x, canvas.height - this.height, this.width, this.height);
-        ctx.fillStyle = "green";
+        ctx.fillStyle = "lime";
         ctx.fill()
         ctx.closePath()
     }
@@ -132,12 +133,14 @@ var brickRow = 5;
 var brickWidth = canvas.width / brickColumn;
 var brickHeight = canvas.height / 4 / brickRow;
 var bricks = [];
+export var brickcount = 0;
 //とりあえず二次元配列を生成して、brickもその分生成する。
 for (let i = 0; i < brickColumn; i++)
 {
     bricks[i] = [];
     for (let j = 0; j < brickRow; j++)
     {
+        brickcount++;
         bricks[i][j] = new Brick(brickWidth * j, brickHeight * i, brickWidth, brickHeight, "blue");
     }
 }
@@ -201,14 +204,21 @@ function update()
 
     if (main2GameOver || main3GameOver)
     {
-        window.cancelAnimationFrame(main2loop);
-        window.cancelAnimationFrame(getMain3Loop);
-
-        if (main2GameOver)
+        if (IsDebug)
         {
-            if (window.confirm("GameOver"))
+            var main2loop = window.requestAnimationFrame(update);
+        }
+        else
+        {
+            window.cancelAnimationFrame(main2loop);
+            window.cancelAnimationFrame(getMain3Loop);
+
+            if (main2GameOver)
             {
-                location.href = "";
+                if (window.confirm("GameOver"))
+                {
+                    location.href = "";
+                }
             }
         }
     }
@@ -225,7 +235,6 @@ function update()
     ball.update();
     paddle.update();
 
-
     for (let i = 0; i < brickColumn; i++)
     {
         for (let j = 0; j < brickRow; j++)
@@ -233,7 +242,13 @@ function update()
             bricks[i][j].update();
             if (bricks[i][j].isHit)
             {
+                brickcount--;
                 bricks[i][j] = new Brick();
+            }
+
+            if (brickcount <= 0)
+            {
+                IsGameClear = true;
             }
         }
     }
