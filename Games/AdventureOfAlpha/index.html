@@ -4,13 +4,40 @@
     <meta charset="utf-8">
     <title>Adventure of Alpha</title>
     <link rel="stylesheet" href="/css/style.css">
+
+
+
     <div id="info"></div>
 </head>
 <body>
     <div id="top"></div>
+    <div id="content">
+        <!-- content start -->
+        <div id="Main">
+            <div id="canvas_wrapper" style="width:max-content; margin: 100px auto 200px auto;">
+                <canvas id="mainCanvas" width=900px height=600px
+                    style="background-color: rgb(0, 0, 0); outline:1px solid blue"></canvas>
 
-    <h1>helohelo</h1>
+                <script src="game.js"></script>
+                <script src="map.js"></script>
+                <script src="tile.js"></script>
+                <script src="monster.js"></script>
+                <script src="util.js"></script>
+                <script src="spell.js"></script>
+                <script>
+                    x = y = 0;
+                    function draw()
+                    {
+                        x * 20, y * 20, 20.20;
+                    }
+                    setInterval(draw, 15);
+                    setupCanvas();
+                </script>
+            </div>
+        </div>
 
+
+        <!-- content end  -->
     </div>
     <div id="footer"></div>
     <script src="/jquery-3.6.0.min.js"></script>
