@@ -52,9 +52,34 @@ function draw()
         for (let j = 0; j < numTiles; j++)
         {
             getTile(i, j).draw();
-            // tiles[i][j].draw();
         }
     }
 
-    drawSprite(0, x, y);
+    //monsterの描画
+    for (let i = 0; i < monsters.length; i++)
+    {
+        monsters[i].draw();
+    }
+
+    //playerの描画
+    player.draw();
+}
+
+//monsterのターンごとの処理
+function tick()
+{
+    for (let k = monsters.length - 1; k >= 0; k--)
+    {
+        //monsterが死んでいなければ
+        if (!monsters[k].dead)
+        {
+            //update
+            monsters[k].update();
+        }
+        else
+        {
+            //死んでるmonsterは配列から削除
+            monsters.splice(k, 1);
+        }
+    }
 }

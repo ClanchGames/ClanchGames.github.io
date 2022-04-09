@@ -8,6 +8,12 @@ class Tile
         this.passable = passable;//通れるかどうか
     }
 
+    //他のタイルとの距離を測る関数
+    dist(other)
+    {
+        return Math.abs(this.x - other.x) + Math.abs(this.y - other.y);
+    }
+
     // 指定された方向の隣のタイルを取得
     getNeighbor(dx, dy)
     {
@@ -17,7 +23,7 @@ class Tile
     //隣接するタイルをすべて取得して、シャッフルして返す
     getAdjacentNeighbors()
     {
-        //シャッフルしてから返す
+
         return shuffle([
             this.getNeighbor(0, -1),
             this.getNeighbor(0, 1),
@@ -41,7 +47,7 @@ class Tile
         //未開のところ
         let frontier = [this];
 
-        console.log(frontier.length);
+        //frontier.lengthが0になるまでloop
         while (frontier.length)
         {
             // frontierの最後の要素の隣接する通れる道から
@@ -49,6 +55,7 @@ class Tile
             //connectedTilesとneighborsを結合
             connectedTiles = connectedTiles.concat(neighbors);
             //frontierとneighborsを結合
+            // その結果frontier.lengthが0になったらloop脱出
             frontier = frontier.concat(neighbors);
         }
         return connectedTiles;

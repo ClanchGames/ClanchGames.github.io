@@ -33,27 +33,26 @@
             tileSize = 64;//tileの大きさ
             numTiles = 9;//9×9のmap
             uiWidth = 4;
-            x = y = 0;
+            level = 1;
+
 
             //spritesheet読み込み
             spritesheet = new Image();
             spritesheet.src = "spritesheet.png";
 
-            //
+            //移動
             document.querySelector("html").onkeypress = function (e)
             {
-                if (e.key == "w") y--;
-                if (e.key == "s") y++;
-                if (e.key == "a") x--;
-                if (e.key == "d") x++;
+                if (e.key == "w") player.tryMove(0, -1);
+                if (e.key == "s") player.tryMove(0, 1);
+                if (e.key == "a") player.tryMove(-1, 0);
+                if (e.key == "d") player.tryMove(1, 0);
             };
 
             setupCanvas();//Canvasの取得や初期化
             setInterval(draw, 15);//描画のループ
             generateLevel();//map生成
-            startingTile = randomPassableTile();
-            x = startingTile.x;
-            y = startingTile.y;
+            player = new Player(randomPassableTile());//player生成
 
 
         </script>

@@ -1,12 +1,13 @@
 //map生成 level生成
 function generateLevel()
 {
-    generateTiles();
     tryTo("generate map", function ()
     {
         //通れるタイルの数と、ランダムな通れるタイルにつながってる通れるタイルの数が一致してたらオッケー
         return generateTiles() == randomPassableTile().getConnectedTiles().length;
     });
+
+    generateMonsters();
 }
 
 //tile生成
@@ -70,14 +71,20 @@ function randomPassableTile()
     return tile;
 }
 
-/*
-    generate a level and make note of how many passable tiles we generated
+function generateMonsters()
+{
+    monsters = [];
+    let numMonsters = level + 1;
+    for (let i = 0; i < numMonsters; i++)
+    {
+        spawnMonster();
+    }
+}
 
-    starting from a random passable tile, get all tiles connected to it
-
-    if the total number of passsable tiles matches the number of connected tiles
-        everything is connected!
-    else
-        start over
-
-*/
+function spawnMonster()
+{
+    // シャッフルしてから0番目を取得することでランダムにTypeを決定
+    let monsterType = shuffle([Bird, Snake, Tank, Eater, Jester])[0];
+    let monster = new monsterType(randomPassableTile());
+    monsters.push(monster);
+}
